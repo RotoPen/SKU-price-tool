@@ -531,6 +531,9 @@ if campaign_df is not None:
             lambda x: '{:,}'.format(int(x)) if pd.notnull(x) and str(x).strip() != "" else x
         )
     
+    # 新增：填充空值，防止AgGrid渲染异常
+    show_df = show_df.fillna("")
+    
     # 将表格标题从"活动价格审核表（只读高亮，无复选框）"改为"活动价预览表"
     st.markdown("#### 活动价预览表（按价格来源高亮显示）")
     
